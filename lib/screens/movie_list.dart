@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/screens/movie_desc.dart';
 
 class MovieListScreen extends StatefulWidget {
   MovieListScreen({Key? key}) : super(key: key);
@@ -77,7 +78,9 @@ class _MovieListScreenState extends State<MovieListScreen> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.to(() => MovieListScreen());
+                        Get.off(() => MovieScreen(), arguments: {
+                          'bg': bgImgs[index],
+                        });
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -105,7 +108,7 @@ List<String> bgImgs = [
   'https://images.news18.com/ibnlive/uploads/2016/04/12931171_1079163228794337_8732305975871635522_n.jpg',
   'http://im.rediff.com/movies/2012/feb/13slde1.jpg',
   'https://static.wikia.nocookie.net/dccu/images/f/fd/ZSJL_poster_-_League_together.png/revision/latest?cb=20210302174150',
-  'http://hippy.in/wp-content/uploads/custom-made-hollywood-movie-posters-1.jpg',
+  'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS4jfQQt_0vCA4XSwGiWkffC32Tv2oajdWhaYHHVYylYGJ3v17Q',
   'https://blog.karachicorner.com/wp-content/uploads/2013/04/The+Incredible+Burt+Wonderstone+movie+posters.jpg',
   'https://i.insider.com/5ca3d2b892c8866e8b4618d9?width=750&format=jpeg&auto=webp',
   'https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY1200_CR89,0,630,1200_AL_.jpg',

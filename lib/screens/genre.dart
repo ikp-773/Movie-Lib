@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/screens/movie_list.dart';
+import 'package:movie_app/screens/wishlist.dart';
 
 class GenreScreen extends StatefulWidget {
   const GenreScreen({Key? key}) : super(key: key);
@@ -22,10 +23,13 @@ class _GenreScreenState extends State<GenreScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(
-              Icons.bookmark,
-              color: Color(0xffffffff),
-              size: 30,
+            GestureDetector(
+              onTap: () => Get.to(() => WishlistScreen()),
+              child: Icon(
+                Icons.bookmark,
+                color: Color(0xffffffff),
+                size: 30,
+              ),
             ),
             SizedBox(width: 12),
             Icon(
