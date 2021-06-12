@@ -4,7 +4,7 @@
 ![](https://img.shields.io/github/languages/top/ikp-773/Movie-Lib?style=for-the-badge) 
 ![](https://img.shields.io/github/languages/code-size/ikp-773/Movie-Lib?color=orange&style=for-the-badge) 
 
-Movie Lib is a mobile application where you can find the movies of your interest. This app provides a collection of movies of different languages according to your interest. 
+Movie Lib is a mobile application where you can find the movies of your interest. This app provides a collection of movies of different languages according to your genre.
 
 [![](https://img.shields.io/badge/APK-Movie%20Lib-brightgreen?color=purple&style=for-the-badge)]( https://drive.google.com/file/d/15YeNu_nUb_lySw7maSVvzS57c2kcOQ7K/view?usp=sharing)
 
