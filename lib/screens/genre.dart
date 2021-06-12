@@ -46,7 +46,10 @@ class _GenreScreenState extends State<GenreScreen> {
                 itemCount: genres.length,
                 itemBuilder: (context, index) => GestureDetector(
                   onTap: () {
-                    Get.to(() => MovieListScreen());
+                    Get.to(() => MovieListScreen(), arguments: {
+                      'genre': genres[index],
+                      'bg': bgImgs[index],
+                    });
                   },
                   child: Stack(
                     children: [
