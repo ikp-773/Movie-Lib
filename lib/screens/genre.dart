@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/screens/movie_list.dart';
 
 class GenreScreen extends StatefulWidget {
   const GenreScreen({Key? key}) : super(key: key);
@@ -42,49 +43,53 @@ class _GenreScreenState extends State<GenreScreen> {
             SizedBox(
               height: Get.height - 103,
               child: ListView.builder(
-                itemCount: 6,
-                itemBuilder: (context, index) => Stack(
-                  children: [
-                    Container(
-                      height: 100,
-                      width: Get.width,
-                      margin: EdgeInsets.only(bottom: 10),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            'https://wallpaperaccess.com/full/3075879.jpg',
+                itemCount: genres.length,
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    Get.to(() => MovieListScreen());
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 100,
+                        width: Get.width,
+                        margin: EdgeInsets.only(bottom: 10),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              bgImgs[index],
+                            ),
+                            fit: BoxFit.cover,
                           ),
-                          fit: BoxFit.cover,
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Action',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 22,
+                        child: Center(
+                          child: Text(
+                            genres[index],
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Container(
-                      height: 100,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        gradient: RadialGradient(
-                          colors: <Color>[
-                            Color(0x40ffed99),
-                            Color(0x40ac66cc),
-                          ],
-                          tileMode: TileMode
-                              .clamp, // repeats the gradient over the canvas
+                      Container(
+                        height: 100,
+                        width: Get.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: RadialGradient(
+                            colors: <Color>[
+                              col1[index],
+                              col2[index],
+                            ],
+                            tileMode: TileMode.clamp,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             )
@@ -95,4 +100,41 @@ class _GenreScreenState extends State<GenreScreen> {
   }
 }
 
-List<String> bgImgs = [];
+List<String> bgImgs = [
+  'https://cafecomnerd.com.br/wp-content/uploads/2020/08/lionsgate-anuncia-john-wick-5-e-filmados-junto-com-4.jpg',
+  'https://cdn130.picsart.com/315328524453201.png',
+  'https://i.redd.it/scelthzpbny21.jpg',
+  'https://data.whicdn.com/images/331819954/original.jpg',
+  'https://cdn9.dissolve.com/p/D2115_221_773/D2115_221_773_1200.jpg',
+  'https://www.dodho.com/wp-content/uploads/2017/09/P1110024-Copy.jpg',
+  'https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/flexslider_full/public/slideshow_image/1-entry-p80.jpg?itok=Ut2jCoTB',
+];
+List<String> genres = [
+  'Action',
+  'Romance',
+  'Comedy',
+  'Kids',
+  'Family',
+  'Horror',
+  'Race'
+];
+
+List<Color> col1 = [
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+];
+
+List<Color> col2 = [
+  Color(0x40ffdd11),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+  Color(0x40ffed99),
+];
