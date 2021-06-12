@@ -23,13 +23,13 @@ Movie Lib is a mobile application where you can find the movies of your interest
 
 ## How it Works ?
 
-1.This application is for all users who are movie enthusiast
-2.When you open the app, you are requested to Sign in
-3.It directly take you to a page where you can find the categories of movies of your interest
+1. This application is for all users who are movie enthusiast
+2. When you open the app, you are requested to Sign in
+3. It directly take you to a page where you can find the categories of movies of your interest
 there you can select your category
-4.It will take to a page where you can find movies of your category
-5.When you click a movie ,it will give you the complete description of the movie
-6.You can also add this movie to the wishlist for future reviews.
+4. It will take to a page where you can find movies of your category
+5. When you click a movie ,it will give you the complete description of the movie
+6. You can also add this movie to the wishlist for future reviews.
 
 ## Libraries used
 - cloud_firestore: ^2.2.2
@@ -49,7 +49,7 @@ there you can select your category
 
 ```sh
 $ git clone https://github.com/ikp-773/Movie-Lib.git
-$ cd Cov-Ahead/
+$ cd Movie-Lib/
 ```
 
 ## How to Run
