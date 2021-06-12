@@ -23,6 +23,7 @@ class _LoginState extends State<Login> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/movieliblogo.png'),
+            SizedBox(height: 50),
             GestureDetector(
               // onTap: () async {
               //   try {

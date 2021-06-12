@@ -30,6 +30,8 @@ class _MovieListScreenState extends State<MovieListScreen> {
         child: Column(
           children: [
             Container(
+              padding: EdgeInsets.only(top: 20),
+              margin: EdgeInsets.only(bottom: 20),
               height: 150,
               width: Get.width,
               decoration: BoxDecoration(
@@ -63,11 +65,11 @@ class _MovieListScreenState extends State<MovieListScreen> {
               ),
             ),
             SizedBox(
-              height: Get.height - 282,
+              height: Get.height - 302,
               child: GridView.builder(
                   itemCount: bgImgs.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 1,
+                    childAspectRatio: 0.63,
                     crossAxisCount: 2,
                     mainAxisSpacing: 20,
                     crossAxisSpacing: 30,
@@ -77,33 +79,17 @@ class _MovieListScreenState extends State<MovieListScreen> {
                       onTap: () {
                         Get.to(() => MovieListScreen());
                       },
-                      child: Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  bgImgs[index],
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                              gradient: RadialGradient(
-                                colors: <Color>[
-                                  Color(0x88000000),
-                                  Color(0x88000000),
-                                ],
-                                tileMode: TileMode.clamp,
-                              ),
-                            ),
-                            margin: EdgeInsets.only(bottom: 10),
-                            child: Image.network(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                            image: NetworkImage(
                               bgImgs[index],
-                              fit: BoxFit.fill,
-                              height: 100,
                             ),
+                            fit: BoxFit.cover,
                           ),
-                        ],
+                        ),
+                        margin: EdgeInsets.only(bottom: 10),
                       ),
                     );
                   }),
@@ -125,4 +111,10 @@ List<String> bgImgs = [
   'https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY1200_CR89,0,630,1200_AL_.jpg',
   'https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_.jpg',
   'https://images-na.ssl-images-amazon.com/images/I/51i9sHBwn7L._AC_.jpg',
+  'https://m.media-amazon.com/images/M/MV5BY2ZlNWIxODMtN2YwZi00ZjNmLWIyN2UtZTFkYmZkNDQyNTAyXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_.jpg',
+  'https://m.media-amazon.com/images/M/MV5BMTk3OTM5Njg5M15BMl5BanBnXkFtZTYwMzA0ODI3._V1_.jpg',
+  'https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg',
+  'https://images-na.ssl-images-amazon.com/images/I/71fRD3YvnYL.jpg',
+  'http://cdn.shopify.com/s/files/1/0151/0741/products/RG66_Copy_1024x1024.jpg?v=1578633324',
+  'https://m.media-amazon.com/images/M/MV5BMjA2MTEzMzkzM15BMl5BanBnXkFtZTgwMjM2MTM5MDI@._V1_.jpg',
 ];
