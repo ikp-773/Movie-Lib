@@ -25,21 +25,23 @@ class _LoginState extends State<Login> {
             Image.asset('assets/movieliblogo.png'),
             SizedBox(height: 50),
             GestureDetector(
-              // onTap: () async {
-              //   try {
-              //     UserModel result = await _auth.signInUsingGoogle();
-              //     // ignore: unnecessary_null_comparison
-              //     if (result == null) {
-              //       setState(() {
-              //         error = 'Could not Sign In with Google';
-              //       });
-              //     } else {
-              //       Get.to(() => GenreScreen());
-              //     }
-              //   } catch (e) {}
-              // },
-              onTap: () {
-                Get.to(() => GenreScreen());
+              onTap: () async {
+                try {
+                  UserModel result = await _auth.signInUsingGoogle();
+                  // ignore: unnecessary_null_comparison
+                  if (result == null) {
+                    setState(() {
+                      error = 'Could not Sign In with Google';
+                    });
+                  } else {
+                    Get.to(() => GenreScreen());
+                  }
+                } catch (e) {
+                  setState(() {
+                    error = e.toString();
+                  });
+                  print(e.toString());
+                }
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 23),

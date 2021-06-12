@@ -25,79 +25,80 @@ class _MovieListScreenState extends State<MovieListScreen> {
     bg = data['bg'];
     return Scaffold(
       backgroundColor: Color(0xffffd9a4),
-      appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 20),
-              margin: EdgeInsets.only(bottom: 20),
-              height: 150,
-              width: Get.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(18),
-                image: DecorationImage(
-                  image: NetworkImage(bg.toString()),
-                  fit: BoxFit.cover,
-                  colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.6), BlendMode.dstATop),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 20),
+                margin: EdgeInsets.only(bottom: 20),
+                height: 150,
+                width: Get.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(18),
+                  image: DecorationImage(
+                    image: NetworkImage(bg.toString()),
+                    fit: BoxFit.cover,
+                    colorFilter: new ColorFilter.mode(
+                        Colors.black.withOpacity(0.6), BlendMode.dstATop),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      genre.toString(),
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    Text(
+                      'Dive Into the world of $genre',
+                      style: TextStyle(
+                          color: Color(0xff000000),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
                 ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    genre.toString(),
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w800,
+              SizedBox(
+                height: Get.height - 226,
+                child: GridView.builder(
+                    itemCount: bgImgs.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 0.63,
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 30,
                     ),
-                  ),
-                  Text(
-                    'Dive Into the world of $genre',
-                    style: TextStyle(
-                        color: Color(0xff000000),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: Get.height - 302,
-              child: GridView.builder(
-                  itemCount: bgImgs.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 0.63,
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 30,
-                  ),
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Get.off(() => MovieScreen(), arguments: {
-                          'bg': bgImgs[index],
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              bgImgs[index],
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Get.off(() => MovieScreen(), arguments: {
+                            'bg': bgImgs[index],
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                bgImgs[index],
+                              ),
+                              fit: BoxFit.cover,
                             ),
-                            fit: BoxFit.cover,
                           ),
+                          margin: EdgeInsets.only(bottom: 10),
                         ),
-                        margin: EdgeInsets.only(bottom: 10),
-                      ),
-                    );
-                  }),
-            ),
-          ],
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
       ),
     );

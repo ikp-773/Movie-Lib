@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/screens/wishlist.dart';
 
 class MovieScreen extends StatefulWidget {
   MovieScreen({Key? key}) : super(key: key);
@@ -32,7 +33,10 @@ class _MovieScreenState extends State<MovieScreen> {
             height: Get.height / 2.5,
             width: Get.width,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(18),
+                bottomRight: Radius.circular(18),
+              ),
               image: DecorationImage(
                 image: NetworkImage(bg.toString()),
                 fit: BoxFit.cover,
@@ -91,7 +95,10 @@ class _MovieScreenState extends State<MovieScreen> {
                         onTap: () {
                           final snackBar = SnackBar(
                             behavior: SnackBarBehavior.floating,
-                            content: Text("Added to Wishlist!"),
+                            content: GestureDetector(
+                              onTap: () => Get.off(() => WishlistScreen()),
+                              child: Text("Added to Wishlist!"),
+                            ),
                             duration: Duration(seconds: 3),
                           );
 

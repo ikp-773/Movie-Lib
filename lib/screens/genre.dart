@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/models/user.dart';
 import 'package:movie_app/screens/movie_list.dart';
 import 'package:movie_app/screens/wishlist.dart';
+import 'package:movie_app/services/database.dart';
+import 'package:provider/provider.dart';
 
 class GenreScreen extends StatefulWidget {
   const GenreScreen({Key? key}) : super(key: key);
@@ -16,9 +19,38 @@ class _GenreScreenState extends State<GenreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffffd9a4),
+      drawerEdgeDragWidth: Get.width / 2,
+      drawer: Container(
+        width: Get.width * .67,
+        child: Drawer(
+          child: Consumer<UserModel>(
+            builder: (context, user, child) {
+              return StreamBuilder<UserData>(
+                  stream: DatabaseService(uid: user.uid).userData,
+                  builder: (context, snapshot) {
+                    final userData = snapshot.data;
+
+                    return ListView(
+                      padding: EdgeInsets.zero,
+                      children: <Widget>[
+                        UserAccountsDrawerHeader(
+                          accountName: Text(userData!.name),
+                          accountEmail: Text(userData.email),
+                          currentAccountPicture: Image.network(userData.pic),
+                        ),
+                        ListTile(
+                          title: Text('WishList'),
+                          leading: Icon(Icons.bookmark,)
+                        ),
+                      ],
+                    );
+                  });
+            },
+          ),
+        ),
+      ),
       appBar: AppBar(
-        // toolbarHeight: 70,
-        backgroundColor: Color(0xff626B63),
+        backgroundColor: Color(0xff666B63),
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -30,12 +62,6 @@ class _GenreScreenState extends State<GenreScreen> {
                 color: Color(0xffffffff),
                 size: 30,
               ),
-            ),
-            SizedBox(width: 12),
-            Icon(
-              Icons.account_circle_rounded,
-              color: Colors.white,
-              size: 30,
             ),
           ],
         ),

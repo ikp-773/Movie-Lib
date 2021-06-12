@@ -16,3 +16,15 @@ class UserData {
     required this.pic,
   });
 }
+
+class UserDataModel {
+  final String name;
+  final String email;
+  final String pic;
+
+  UserDataModel({
+    required this.name,
+    required this.email,
+    required this.pic,
+  });
+}
